@@ -1,0 +1,34 @@
+#server.port=9100
+#
+#
+### Hibernate Properties
+## The SQL dialect makes Hibernate generate better SQL for the chosen database
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+#
+## Hibernate ddl auto (create, create-drop, validate, update)
+#spring.jpa.hibernate.ddl-auto = update
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:32769/generaldb?useSSL=false
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+org:
+  quartz:
+    jobStore:
+      dataSource: generaldb
+      isClustered: true
+      useProperties: true
+      tablePrefix: QRTZ_
+    job-store-type: jdbc
+    tasks: false
+    scheduler:
+      instanceName: spring-boot-quartz-demo
+      instanceId: AUTO
+    threadPool:
+      threadCount: 5
+    dataSource:
+      platform: org.hibernate.dialect.MySQL5Dialect
